@@ -1,0 +1,37 @@
+{% extends "base.html" %} 
+{%load static %}
+
+{%block content %}
+
+
+
+
+
+
+
+
+
+<div class="container mt-5">
+    <!-- Login form -->
+    <form class="col-6 mx-auto card p-3 shadow-lg" method="post" action="{% url 'calendar' %}">
+        <img src="{% static 'images/Logo-Alyf-BleuNoir-420x240.png'%}" alt="logo alyf"/>
+        {% csrf_token %} 
+
+        <select name="instructorname" id="instructorname">
+            
+
+
+            {% for value  in selectvalues %}
+            <option value="{{value}}">{{ value }}</option>
+           {% endfor %} 
+
+
+         
+          </select>
+        
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,266 @@
+/* Styles globaux */
+@font-face {
+  font-family: "alyfont" ;
+  src: url("../fonts/braga-alyf.597164444595.woff") format("woff");
+}
+
+
+
+
+body {
+  font-family: "ptsans", "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  background:url("../images/alyfbackgroundtest2.ef10aa35e586.jpg") ;
+}
+
+a {
+  color: white;
+  text-decoration: none;
+}
+
+h1,
+h2 {
+  color: #1da0c5;
+  text-align: center;
+}
+
+h1 {
+  margin-top: 20px;
+}
+
+h2 {
+  margin-top: 20px;
+  font-size: 1.8rem;
+}
+
+/* Boutons et marges */
+.btn {
+  outline: none;
+  color: white;
+  background-color: #1da0c5;
+  border: none;
+  padding: 8px 16px;
+  font-size: 1rem;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #147a96;
+}
+
+.d-flex {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.btn a {
+  color: white;
+}
+
+.calbtn {
+  background-color: #1da0c5;
+  color: white;
+  font-weight: bold;
+  margin: 5px;
+}
+
+/* Formulaire */
+.form {
+  margin: auto;
+}
+
+.form input,
+.form select,
+.form textarea {
+  border-radius: 5px;
+  border: 1px solid #17a2b8;
+  outline: none;
+  background: none;
+  padding: 5px;
+  width: 100%;
+}
+
+/* Table des modules */
+.module-detail-table {
+  width: 100%;
+  margin: 20px auto;
+  border-collapse: collapse;
+  background-color: white;
+  opacity: 0.9;
+  font-weight: bold;
+  font-size: larger;
+  max-width: 100%;
+}
+
+.module-detail-table th,
+.module-detail-table td {
+  border: 1px solid #1da0c5;
+  padding: 8px;
+  text-align: left;
+}
+
+.module-detail-table th {
+  background-color: #1da0c5;
+  color: white;
+}
+
+/* Calendrier */
+.calendar-content {
+  width: 100%;
+  overflow-x: auto;
+  padding: 10px;
+  margin-top: 20px;
+}
+
+.calendar {
+  width: 100%;
+  font-size: 1rem;
+}
+
+.calendar th,
+.calendar td {
+  border: 1px solid black;
+  padding: 8px;
+  text-align: center;
+}
+
+.calendar th {
+  background-color: black;
+  color: #1da0c5;
+}
+
+.calendar td {
+  min-width: 50px;
+  height: 80px;
+}
+
+.month {
+  font-size: 1.5rem;
+  color: #1da0c5;
+}
+
+.date {
+  font-size: 1rem;
+  font-weight: bolder;
+  color: #1da0c5;
+}
+
+.aveccours {
+  background-color: black;
+  font-weight: bold;
+  color: white;
+  opacity: 0.8;
+}
+
+.sanscours,
+.notinmonth {
+  background-color: grey;
+  opacity: 0.5;
+}
+
+/* Responsivité pour mobiles */
+/* @media (max-width: 768px) { */
+  /* Texte et espaces plus petits pour petits écrans */
+  
+  /* h1,
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  .calendar th,
+  .calendar td {
+    padding: 4px;
+    font-size: 0.9rem;
+  }
+
+  .calendar {
+    font-size: 0.8rem;
+  }
+
+  .btn {
+    font-size: 0.9rem;
+    padding: 6px 12px;
+    width: 100%;
+  }
+
+  .module-detail-table {
+    font-size: 0.9rem;
+  } */
+
+
+
+  
+/* } */
+
+@media (max-width: 768px) {
+  /* Navbar */
+  .navbar {
+    padding: 0.5rem 1rem;
+  }
+
+  .navbar-brand {
+    font-size: 1rem;
+    padding: 0;
+  }
+
+  /* Title in Calendar */
+  h2 {
+    font-size: 1.2rem;
+    padding: 0.5rem;
+    text-align: center;
+  }
+
+  /* Calendar Container */
+  .calendar {
+    font-size: 12px;
+    margin-top: 10px;
+  }
+
+  /* Buttons */
+  .calbtn, .btn {
+    font-size: 0.9rem;
+    padding: 0.5rem 0.75rem;
+    margin: 0.2rem;
+  }
+}
+
+
+@media (max-width: 576px) {
+  h2 {
+    font-size: 1.3rem;
+  }
+
+  .calendar th,
+  .calendar td {
+    padding: 2px;
+    font-size: 0.75rem;
+  }
+
+  .calendar-content {
+    font-size: 0.7rem;
+  }
+
+  .module-detail-table {
+    font-size: 0.8rem;
+  }
+
+  .d-flex {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .btn {
+    margin: 5px 0;
+  }
+}
+
+.logoalyf{
+  font-family: "alyfont", sans-serif;
+  margin-top: 10px;
+  margin-left:10px
+}

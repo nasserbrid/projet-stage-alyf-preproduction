@@ -1,0 +1,192 @@
+/* Common styles */
+body {
+  font-family: "ptsans", "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+/* Layout Helpers */
+.left {
+  float: left;
+}
+
+.right {
+  float: right;
+}
+
+.clearfix {
+  margin: 15px;
+}
+
+/* Buttons */
+.btn,
+.calbtn {
+  outline: none;
+  color: black;
+  background-color: transparent;
+  box-shadow: 0 0 0 0;
+  margin-right: 3px;
+  background-color: white;
+  font-weight: bold;
+  color: white;
+  background-color: black;
+}
+
+/* Form styling */
+.form {
+  margin: auto;
+}
+
+.form input,
+.form select,
+.form textarea {
+  border-radius: 5px;
+  border: 1px solid #17a2b8;
+  outline: none;
+  background: none;
+  padding: 5px;
+  width: 100%;
+}
+
+/* Calendar */
+.calendar {
+  width: 98%;
+  margin: auto;
+  font-size: 13px;
+  margin-top: 75px;
+}
+
+.calendar tr,
+.calendar td {
+  border: 1px solid black;
+}
+
+.calendar th {
+  padding: 10px;
+  text-align: center;
+  font-size: 18px;
+  background-color: black;
+  color: #1da0c5;
+}
+
+.calendar td {
+  width: 200px;
+  height: 150px;
+  padding: 20px 0px 0px 5px;
+}
+
+.month {
+  font-size: 25px;
+  color: #1da0c5;
+}
+
+.date {
+  font-size: 16px;
+  font-weight: bolder;
+  color: #1da0c5;
+}
+
+/* Module Details */
+.module-detail {
+  padding-left: 38%;
+  background-color: white;
+  opacity: 0.9;
+  color: #1da0c5;
+}
+
+.module-detail-table {
+  position: relative;
+  top: 300px;
+  background-color: white;
+  opacity: 0.9;
+  font-weight: bold;
+  font-size: larger;
+}
+
+/* Additional Styles */
+.aveccours {
+  background-color: black;
+  font-weight: bold;
+  opacity: 0.8;
+  color: white;
+}
+
+.sanscours {
+  background-color: black;
+  opacity: 0.8;
+}
+
+.notinmonth {
+  background-color: grey;
+  opacity: 0.3;
+}
+
+/* Heading */
+h1,
+h2 {
+  color: white;
+}
+
+h2 {
+  text-align: center;
+  width: 98%;
+  background-color: black;
+  color: #1da0c5;
+  padding: 10px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  /* General adjustments for mobile and tablets */
+  .calendar td {
+    width: auto;
+    height: auto;
+    padding: 10px 5px;
+    font-size: 12px;
+  }
+
+  .module-detail {
+    padding-left: 0;
+    text-align: center;
+  }
+
+  .module-detail-table,
+  .calendar {
+    width: 100%;
+    margin-top: 20px;
+  }
+
+  .btn,
+  .calbtn {
+    font-size: 14px;
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  h2 {
+    font-size: 20px;
+    padding: 5px;
+  }
+}
+
+@media (max-width: 576px) {
+  /* Adjustments for very small screens */
+  .calendar {
+    font-size: 11px;
+  }
+
+  .calendar td,
+  .calendar th {
+    font-size: 10px;
+    padding: 5px;
+  }
+
+  .module-detail-table,
+  .module-detail {
+    font-size: small;
+    padding: 5px;
+    text-align: center;
+  }
+
+  h2 {
+    font-size: 18px;
+  }
+}

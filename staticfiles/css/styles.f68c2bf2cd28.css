@@ -1,0 +1,194 @@
+/* Common styles */
+
+@font-face {
+  font-family: "alyfont" ;
+  src: url("../fonts/braga-alyf.597164444595.woff") format("woff");
+}
+
+
+
+body {
+  font-family: "ptsans", "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
+ 
+  background:url("../images/alyfbackgroundtest2.ef10aa35e586.jpg") ;
+ 
+}
+
+
+
+
+.left {
+  float: left;
+}
+
+.right {
+  float: right;
+}
+
+.btn {
+  outline: none;
+  color: black;
+  background-color: transparent;
+  box-shadow: 0 0 0 0;
+  margin-right: 3px;
+  background-color: white;
+}
+
+.clearfix {
+  margin: 15px;
+}
+
+.form {
+  margin: auto;
+}
+
+.form input,
+.form select,
+.form textarea {
+  border-radius: 5px;
+  border: 1px solid #17a2b8;
+  outline: none;
+  background: none;
+  padding: 5px;
+  width: 100%;
+}
+
+/* App styles */
+.title {
+  text-align: center;
+  margin: 10px;
+  ;
+}
+
+.calendar {
+  width: 98%;
+  margin: auto;
+  font-size: 13px;
+  margin-top: 75px;
+}
+
+.calendar tr,
+.calendar td {
+  border: 1px solid black;
+}
+
+.calendar th {
+  padding: 10px;
+  text-align: center;
+  font-size: 18px;
+  background-color:black;
+  color: #1da0c5
+}
+
+.calendar td {
+  width: 200px;
+  height: 150px;
+  padding: 20px 0px 0px 5px;
+}
+
+.month {
+  font-size: 25px;
+  color: #1da0c5;
+}
+
+.date {
+  font-size: 16px ;
+  font-weight: bolder;
+  color:#1da0c5
+
+}
+
+ul {
+  height: 100%;
+  padding: 0px 5px 0px 20px;
+}
+
+a {
+  color: white;
+}
+
+h1{
+  color:white;
+}
+
+.aveccours{
+  background-color: black;
+  font-weight: bold;
+  opacity:0.80;
+  color:white
+}
+
+.sanscours{
+  background-color: black;
+  opacity:0.8;
+}
+
+.notinmonth{
+  background-color: grey;
+  opacity: 0.3;
+}
+
+
+
+
+.calbtn{
+  background-color: black;
+  opacity: 1;
+  font-weight: bold;
+  color:white;
+  /* margin-right: 1px; */
+  position: relative;
+  left: 22px;
+
+}
+
+.btn btn-link nav-link{
+  position: relative;
+  left: 2200px;
+  background-color: black;
+  
+}
+
+h2 {
+  padding-left:38%;
+  width: 98%;
+  left:10px;
+  position:relative;
+ 
+  top:75px;
+  background-color: black;
+  color:  #1da0c5;
+
+
+}
+
+.module-detail-table{
+  position:relative;
+  top:300px;
+  background-color: white ;
+  opacity: 0.90;
+}
+
+.module-detail-table {
+  position:relative;
+  top:300px;
+  background-color: white ;
+  opacity: 0.90;
+  font-weight: bold;
+  font-size: larger;
+}
+
+.module-detail  {
+  position:relative;
+  padding-left:38%;
+  background-color: white;
+  opacity: 0.9 ;
+  top:309px;
+  left:0px;
+  color:  #1da0c5;
+
+}
+
+.logoalyf{
+  font-family: "alyfont", sans-serif;
+}

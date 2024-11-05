@@ -1,0 +1,38 @@
+{% extends "base.html" %} {% block content %} {% csrf_token %}
+
+<div class="container">
+  <div class="calendar text-center">
+    <h2>Planning de {{ current_formateur }}</h2>
+    <div class="table-responsive">
+      {{ calendar }}
+      <!-- Affichage du calendrier avec les événements -->
+    </div>
+  </div>
+
+  <div class="d-flex justify-content-around mt-4 flex-wrap">
+    <button class="btn btn-primary mb-2">
+      <a
+        href="?{{ prev_month }}"
+        class="text-white"
+        style="text-decoration: none"
+        >Mois précédent</a
+      >
+    </button>
+    <button class="btn btn-primary mb-2">
+      <a
+        href="?{{ next_month }}"
+        class="text-white"
+        style="text-decoration: none"
+        >Mois suivant</a
+      >
+    </button>
+    <button
+      class="btn btn-success mb-2"
+      onclick="location.href='{% url 'telecharger_document' filename %}'"
+    >
+      Télécharger fichier Excel
+    </button>
+  </div>
+</div>
+
+{% endblock %}

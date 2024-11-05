@@ -1,0 +1,32 @@
+{% extends "base.html" %} {% block content %}
+
+<div class="container mt-5">
+  <!-- Formulaire de connexion avec card responsive -->
+  <form
+    class="card p-4 shadow-lg mx-auto"
+    method="post"
+    action="{% url 'calendar' %}"
+    style="max-width: 500px"
+  >
+    <h1 class="text-center mb-4">
+      <span style="color: green">Alyf</span>
+    </h1>
+
+    {% csrf_token %}
+
+    <div class="form-group">
+      <label for="instructorname">Sélectionnez un formateur :</label>
+      <select class="form-control" name="instructorname" id="instructorname">
+        {% for value in selectvalues %}
+        <option value="{{ value }}">{{ value }}</option>
+        {% endfor %}
+      </select>
+    </div>
+
+    <div class="d-flex justify-content-center">
+      <button type="submit" class="btn btn-primary mt-3">Soumettre</button>
+    </div>
+  </form>
+</div>
+
+{% endblock %}
