@@ -68,24 +68,24 @@ def selectformateur(request):
     if not is_admin(request.user):
          raise PermissionDenied
     
-
     if cache.get("liste_formateurs_selecteur") == None:
 
-
         pythoncom.CoInitialize()
-
         excel = ExcelFile()
         selectvalues = excel.retrieve_instructor_list("FORMATEURS - MODULES")
         names = []
+       
         for instructor in selectvalues:
             names.append(instructor[2])
+
+        names = sorted(names)  
         
         cache.set("liste_formateurs_selecteur", names)
-        
-
+    
     else:
          names = cache.get("liste_formateurs_selecteur")
-        
+         names = sorted(names)
+               
     return render(request, "selectformateur.html", {"selectvalues":names})
 
 @login_required
@@ -105,7 +105,7 @@ def telecharger_document(request, file):
                 print(f"{username} : username")
                 
                 response = HttpResponse(data, content_type='application/vnd.ms-excel.sheet.macroEnabled.12')
-                response["Content-Disposition"] = u"attachment; filename={0}".format(username)
+                response["Content-Disposition"] = u"attachment; filename={0}.xlsm".format(username)
                 return response
             # else:
             #  raise Http404      
@@ -123,9 +123,7 @@ class CalendarView(LoginRequiredMixin,View):
     def get(self, request , *args, **kwargs):
        
         context = self.get_context_data()
-        print("in get")
-      
-     
+        
         return render(request, 'calendar.html', context)
     
     
@@ -183,7 +181,7 @@ class CalendarView(LoginRequiredMixin,View):
              
         
         else:
-            print("hello before co-initialize")
+           
             pythoncom.CoInitialize()  # Pour initialiser COM si nécessaire (pour Excel) 
 
             if cache.get("master_excel_file") != None:

@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-r=zu!qy+tr+m=2t0g)^)_9n6%1-nzo5hv2&qm881u2bs&xhvr3
 DEBUG = True
 
 
-ALLOWED_HOSTS = ['https://planning.alyfpro.fr', 'planning.alyfpro.fr', "127.0.0.1"]
+ALLOWED_HOSTS = ['https://planning.alyfpro.fr', 'planning.alyfpro.fr', "127.0.0.1", "http://localhost"]
 CSRF_TRUSTED_ORIGINS = ['https://planning.alyfpro.fr', 'http://planning.alyfpro.fr/']
 CORS_ALLOW_ALL_ORIGINS = True
 CSRF_COOKIE_SECURE = True

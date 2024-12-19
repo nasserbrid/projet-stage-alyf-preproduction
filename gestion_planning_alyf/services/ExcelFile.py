@@ -32,18 +32,18 @@ class ExcelFile:
         self.excel = win32com.client.Dispatch("Excel.Application")
         self.workbook = workbook
         self.worksheet = worksheet
-        self.excel.Visible = False
-        self.excel.DisplayAlerts = False
+      #   self.excel.Visible = False
+      #   self.excel.DisplayAlerts = False
           
 
     def open_worksheet(self, sheetName, path = os.getenv("ALYFMASTERPATH")):
            
         
-            self.excel.Visible = False
-            self.excel.DisplayAlerts = False
+            self.excel.Visible = True
+            self.excel.DisplayAlerts = True
         
        
-            if self.excel.Visible == False:
+            if self.excel.Visible == True:
                   # print(f"excel is {self.excel.Visible}")
                   
                                 
@@ -90,9 +90,9 @@ class ExcelFile:
 
     def save_instructor_sheet_separately(self, formateur_name, target_path):
             
-            self.excel.Visible = False
+            self.excel.Visible = True
             print(f"{self.excel.Visible}: excel visible?")
-            self.excel.DisplayAlerts = False
+            self.excel.DisplayAlerts = True
             try:   
                 print(f"{self.excel.Visible}: excel visible?")
                 print("echo alpha bravo")
@@ -448,8 +448,8 @@ class ExcelFile:
           
           print("je suios ds retrieve instructor list")
           
-          self.excel.Visible = False
-          self.excel.DisplayAlerts = False
+          self.excel.Visible = True
+          self.excel.DisplayAlerts = True
          
 
           if cache.get("master_excel_file") != None:

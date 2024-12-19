@@ -1,6 +1,6 @@
 from django.apps import AppConfig
+#from .utils.schedule import check_server_status
 from .utils.schedule import start_scheduler
-#from .utils.scheduler_test import start_scheduler
 import os
 
 class GestionPlanningAlyfConfig(AppConfig):
@@ -9,8 +9,9 @@ class GestionPlanningAlyfConfig(AppConfig):
     # scheduler_started = False 
     
 
-    # def ready(self):
-    #     start_scheduler()
+   # def ready(self):
+    #   start_scheduler()
+         
        
         # if not GestionPlanningAlyfConfig.scheduler_started:
         #     if os.environ.get('RUN_MAIN', None) != 'true':

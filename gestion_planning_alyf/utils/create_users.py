@@ -19,8 +19,14 @@ django.setup()
 from django.contrib.auth.models import User
 from django.contrib.auth.models import Group
 
+#TDD
+def generate_password(instructor):
+    firstname = instructor[1]
 
+    lastname = instructor[2]
 
+    mot_de_passe = firstname[0:3] + "$%!" + lastname[0:2]
+    return mot_de_passe
 
 def createallusers():
     excel = ExcelFile()
@@ -28,7 +34,7 @@ def createallusers():
     print(instructors)
 
     for instructor in instructors:
-        User.objects.create_user(instructor[2], instructor[0], instructor[1])
+        User.objects.create_user(instructor[2], instructor[0], generate_password(instructor))
         print("....")
     
 

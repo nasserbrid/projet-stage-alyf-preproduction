@@ -1,6 +1,6 @@
 {% extends "base.html" %} {% block content %} {% csrf_token %}
 
-<div class="container">
+<div class="container-fluid p-0">
   <div class="calendar text-center">
     <h2>Planning de {{ current_formateur }}</h2>
     <div class="table-responsive">
@@ -35,4 +35,9 @@
   </div>
 </div>
 
+
 {% endblock %}
+
+
+
+

@@ -14,25 +14,11 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'demo_alyf.settings')
 django.setup()
 
 def get_http_file_metadata(url, interval=60):
- 
-
-    print("hello world i am running in the get http metadata function")
-
-  
-        
-
-
     response = requests.head(url)
-    
-    print(response.__dict__)
-
     last_mod_time = response.headers.get('Last-Modified')
-
 
     while True:
         try:
-              
-              
                       
               time.sleep(interval)
            

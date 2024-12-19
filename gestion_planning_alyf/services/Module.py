@@ -209,10 +209,10 @@ class Module:
                   
     def to_dict(self):
         return {
-            'id_module': str(self.__id_module),
-            'nom_module': self.__nom_module,
-            'date_debut': self.__date_debut.isoformat(),
-            'date_fin': self.__date_fin.isoformat(),
+            #'id_module': str(self.__id_module),
+            'nom du module': self.__nom_module,
+            'date_debut': self.__date_debut.isoformat(' '),
+            'date_fin': self.__date_fin.isoformat(' '),
             'session': self.__session,
             'modules_termines': self.__modules_termines,
             'modules_a_venir': self.__modules_a_venir

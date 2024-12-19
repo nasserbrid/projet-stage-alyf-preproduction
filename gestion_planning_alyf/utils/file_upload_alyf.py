@@ -10,12 +10,12 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'demo_alyf.settings')
 django.setup()
 
 # Téléchargement du fichier
-url = 'http://127.0.0.1:8080/alyf.xlsm'
+url = 'http://127.0.0.1:8080/Planning_V11.0.xlsm'
 response = requests.get(url)
 
 # Création d'un fichier temporaire avec un suffixe .xlsm
 def upload_excelfile_to_temp():
-    url = 'http://127.0.0.1:8080/alyf.xlsm'
+    url = 'http://127.0.0.1:8080/Planning_V11.0.xlsm'
     destination = tempfile.NamedTemporaryFile(delete=False, suffix='.xlsm').name
 
 
@@ -39,5 +39,4 @@ def upload_excelfile_to_temp():
 
 # Le fichier temporaire persiste jusqu'à ce que vous le supprimiez
     # print(f"The temporary file is available at: {destination}")
-
-#upload_excelfile_to_temp()
+upload_excelfile_to_temp()

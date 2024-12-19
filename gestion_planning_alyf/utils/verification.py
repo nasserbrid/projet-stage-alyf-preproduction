@@ -40,8 +40,7 @@ def is_planning__change(instructor):
     formateur = Formateur(instructor[1], instructor[2], instructor[0])
    
     print(formateur.get_last_name())
-    #instructeur pos 1  correspond a prenom, 2 a nom et 0 a email.
-   # print(formateur.get_last_name())
+  
     cle = None
     for key, value in dico.items():
         print(f"{key.get_last_name()}: key")
@@ -49,22 +48,10 @@ def is_planning__change(instructor):
         if key.get_last_name() == formateur.get_last_name():
            
             fileA = dico[key]
-            #print(f"{fileA}: file A" )
-           # print(f"{fileA}: file A", type(fileA) )
+          
             cle = key
-            # print(f"{cle}: cle" )
-            
-            # print(f"I am fileA :{fileA}")
             break
-    
-   # print(formateur.get_last_name()) 
-   # print(formateur)  
-    # print(f"{dico[cle]} : file A")
-    # print(f"{cle} : cle")   
-   
-    # print("file A not in local")
-    # print(f"{cle}: cle" )
-    # print(f"{cle.get_last_name()}: cle qui correspond à un formateur" )
+ 
 
     if cle is None:
      
