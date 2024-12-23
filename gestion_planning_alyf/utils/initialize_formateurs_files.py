@@ -25,11 +25,11 @@ from ..services import ExcelFile,Formateur
 
 def build_schedule_files_for_formateurs():
 
-    x = cache.get("master_excel_file")
-    print(f"{x} cache" )
+    #x = cache.get("master_excel_file")
+    #print(f"{x} cache" )
 
     excel = ExcelFile()
-    excel.open_worksheet("DEV WEB")
+    excel.open_worksheet("Calendrier")
     print(excel)
     instructors = excel.retrieve_instructor_list("FORMATEURS - MODULES")
     print(instructors)
@@ -50,26 +50,26 @@ def build_schedule_files_for_formateurs():
 
 
 # Create a dictionary to store the temporary file paths
-    directory_of_individual_instructor_sheet_in_temp_storage = {}
+    
     alyfmasterfile = cache.get("master_excel_file")
     print(f"{alyfmasterfile}: alyfmasterfile")
-    print(f"{directory_of_individual_instructor_sheet_in_temp_storage}: directory")
+    
 
 # Create a unique temporary file for each instructor
-    for formateur in formateurs:
-         excelfile = ExcelFile()
+    
+    excelfile = ExcelFile()
          
-         excelfile.open_worksheet("DEV WEB", alyfmasterfile)
-         print("past open_worksheet with alyfmasterfile in param ")
-   
-         temp_file = tempfile.NamedTemporaryFile(delete=False, suffix='.xlsm').name
-         print(f"{temp_file}:temp_file")
-         directory_of_individual_instructor_sheet_in_temp_storage[formateur] = temp_file
-         print(formateur.get_last_name())
-         excelfile.save_instructor_sheet_separately(formateur.get_last_name(), temp_file)
+    excelfile.open_worksheet("Calendrier")
+    # print("past open_worksheet with alyfmasterfile in param ")
+    dico_files_instructor = excelfile.save_instructor_sheet_separately(formateurs)
+        # temp_file = tempfile.NamedTemporaryFile(delete=False, suffix='.xlsm').name
+        
+         
+         
+        # peut etre utile plus tard -> excelfile.save_instructor_sheet_separately(formateur.get_last_name(), temp_file)
     # cache.set("dict_sheets_temp_storage", directory_of_individual_instructor_sheet_in_temp_storage)
-    print(directory_of_individual_instructor_sheet_in_temp_storage)
-    cache.set("dict_sheets_temp_storage", directory_of_individual_instructor_sheet_in_temp_storage)
+    
+    cache.set("dict_sheets_temp_storage", dico_files_instructor)
 
 
 # Now you can refer to each instructor's temp file through the dictionary

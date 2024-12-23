@@ -1,4 +1,5 @@
 import json
+import tempfile
 import win32com.client
 import time
 
@@ -37,6 +38,8 @@ class ExcelFile:
           
 
     def open_worksheet(self, sheetName, path = os.getenv("ALYFMASTERPATH")):
+            
+            print("in open worksheet")
            
         
             self.excel.Visible = True
@@ -68,7 +71,7 @@ class ExcelFile:
 
                          exit(1)
                    except Exception as e:
-                        print('La feuille "DEV WEB" est introuvable:', e)
+                        print('La feuille "Calendrier" est introuvable:', e)
                         self.workbook.Close(SaveChanges=False)
                         #self.EXCEL.Quit()
                         self.excel.Quit()
@@ -78,7 +81,7 @@ class ExcelFile:
     def save_formateur_worksheet(self, formateur_name):
          
           
-          self.worksheet.Cells(1, 8).Value = formateur_name
+          self.worksheet.Cells(2, 20).Value = formateur_name
        
           self.workbook.SaveAs(os.getenv("ALYFDEVPATH"))
           #removed ConflictResolution=2
@@ -88,7 +91,7 @@ class ExcelFile:
           self.excel.Quit()
     
 
-    def save_instructor_sheet_separately(self, formateur_name, target_path):
+    def save_instructor_sheet_separately_base(self, formateur_name, target_path):
             
             self.excel.Visible = True
             print(f"{self.excel.Visible}: excel visible?")
@@ -97,7 +100,8 @@ class ExcelFile:
                 print(f"{self.excel.Visible}: excel visible?")
                 print("echo alpha bravo")
             # Set the formateur name in the worksheet
-                self.worksheet.Cells(1, 8).Value = formateur_name
+                
+                self.worksheet.Cells(2, 20).Value = formateur_name
 
             # Copy the worksheet to a new workbook
                 new_workbook = self.excel.Workbooks.Add()
@@ -108,6 +112,7 @@ class ExcelFile:
                 new_workbook.SaveAs(target_path, FileFormat=52)
                 #removed conflict res  ConflictResolution=2
                 new_workbook.Close(SaveChanges=True)
+                
                 print(f"Saved worksheet as new file: {target_path}")
 
             except Exception as e:
@@ -115,6 +120,41 @@ class ExcelFile:
             finally:
                  self.workbook.Close(SaveChanges=False)
                  self.excel.Quit()
+    
+
+    def save_instructor_sheet_separately(self, liste_de_prof):
+            
+            directory_of_files_for_instructors = {}
+            
+            self.excel.Visible = True
+            print(f"{self.excel.Visible}: excel visible?")
+            self.excel.DisplayAlerts = True
+            try:   
+                for prof in liste_de_prof:
+                      
+            # Set the formateur name in the worksheet
+                  name = prof.get_last_name()
+                  self.worksheet.Cells(2, 20).Value = name
+
+            # Copy the worksheet to a new workbook
+                  new_workbook = self.excel.Workbooks.Add()
+                  self.worksheet.Copy(Before=new_workbook.Sheets(1))
+                # A FAIRE enlever le sheet1 des fichiers de planning individuels
+                  temp_file = tempfile.NamedTemporaryFile(delete=False, suffix='.xlsm').name
+                  directory_of_files_for_instructors[prof] = temp_file
+           
+                  new_workbook.SaveAs(temp_file, FileFormat=52)
+                #removed conflict res  ConflictResolution=2
+                  new_workbook.Close(SaveChanges=True)
+                  
+               
+
+            except Exception as e:
+                 print(f"Error during operation: {e}")
+            finally:
+                 self.workbook.Close(SaveChanges=False)
+                 self.excel.Quit()
+                 return directory_of_files_for_instructors
 
           
           
@@ -129,7 +169,7 @@ class ExcelFile:
           # print("in create full year Teaching")
            try:
                   i=0 
-                  df_fullYearTeachingData = pd.read_excel(excel_path, sheet_name="DEV WEB", header=None,  usecols=[i,i+1,i+2], skiprows=3, index_col=None)
+                  df_fullYearTeachingData = pd.read_excel(excel_path, sheet_name="Calendrier", header=None,  usecols=[i,i+1,i+2], skiprows=6, index_col=None)
                   df_fullYearTeachingData = df_fullYearTeachingData.fillna('')
                
                               
@@ -137,12 +177,12 @@ class ExcelFile:
                    print("Le fichier Excel est introuvable.")
                    exit(1)
            except ValueError:
-              print('La feuille "DEV WEB" est introuvable.')
+              print('La feuille "Calendrier" est introuvable.')
               exit(1)
                   
            for month in range(2,13):
                    i +=3
-                   df = pd.read_excel(excel_path, sheet_name="DEV WEB", header=None, usecols=[i, i+1, i+2], skiprows=3, index_col=None)
+                   df = pd.read_excel(excel_path, sheet_name="Calendrier", header=None, usecols=[i, i+1, i+2], skiprows=6, index_col=None)
                    df = df.fillna('')
                                            
 
@@ -219,7 +259,7 @@ class ExcelFile:
                 #            print(df[0].iloc[date])
                      
 
-                
+                  #print(f"{type(df[0].iloc[blocks[1][0]])}:type datededebut")
                   for j in range(0, len(blocks)):
                             # print(j)
                              #modkey = j
@@ -333,27 +373,47 @@ class ExcelFile:
                     
      
     def find_session_type(self, session_name):
+
+
+      
+       excel_path = cache.get("master_excel_file")
+       liste_feuillets = ["Sessions Continues", "Sessions Alternantes", "Hors Cursus", "Isitech - XEFI"]
+
+       for feuillet in liste_feuillets:
+           df_session_name_and_dates = pd.read_excel(excel_path, sheet_name=feuillet, skiprows=1, nrows=3,  header=None ,index_col=None)
+           df_session_name_and_dates = df_session_name_and_dates.fillna('')
+
+           try:
+            value = session_name
+            column_index = df_session_name_and_dates.columns[df_session_name_and_dates.eq(value).any()].tolist()[0]
+            return feuillet
+           except:
+            print("not")
+        
             
     
-      keywords = {
-        "Isitech - XEFI": ["isi", "ISI", "isitech", "xefi", "XEFI", "ISITECH", "XEFI"],
-        "Sessions Alternantes": ["ALT", "alt", "Alt"],
-        "Hors Cursus - Atos Générique": ["HC", "HORS CURSUS", "hors cursus", "horscursus", "ATOS", "atos", "ATOS GENERIQUE"]
-     }
+    #   keywords = {
+        
+    #     "Hors Cursus": ["HC", "HORS CURSUS", "hors cursus", "horscursus", "ATOS", "atos", "ATOS GENERIQUE"],    
+    #     "Isitech - XEFI": ["isi", "ISI", "isitech", "xefi", "XEFI", "ISITECH", "XEFI", "FRANCE TRAVAIL"],
+    #    "Sessions Alternantes": ["ALT", "alt", "Alt"]
+        
+    #  }
  
-    # Check if any keyword from the lists is in the input string
-      for key, values in keywords.items():
-           if any(value in session_name for value in values):
-             return key
+    # # Check if any keyword from the lists is in the input string
+    #   for key, values in keywords.items():
+    #        if any(value in session_name for value in values):
+    #          return key
  
-    # Default return value if no match is found
-      return "Sessions Continues"
+    # # Default return value if no match is found
+    #   return "Sessions Continues"
  
         
      
     def get_session_dataframe(self, sheetName, sessionName): 
         # feuille = self.open_worksheet(self.find_session_type(sheetName))
-         
+         print(f"{sheetName}: sheetname")
+         print(f"{sessionName}: Sessioname")
          if cache.get("master_excel_file") != None:
                excel_path = cache.get("master_excel_file")
          else:

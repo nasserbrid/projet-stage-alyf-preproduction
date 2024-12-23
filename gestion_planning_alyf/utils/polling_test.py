@@ -50,7 +50,7 @@ def get_http_file_metadata(url, interval=60):
     return current_mod_time
 
 # URL of the file
-url = 'http://localhost:8080/alyf.xlsm'
+url = 'http://localhost:8080/Planning_V11.0.xlsm'
 
 print("ligne 79")
 current_mod_time = get_http_file_metadata(url)

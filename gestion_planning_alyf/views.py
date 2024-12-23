@@ -187,7 +187,7 @@ class CalendarView(LoginRequiredMixin,View):
             if cache.get("master_excel_file") != None:
                 file = cache.get("master_excel_file")
                 test_excel_file = ExcelFile()
-                test_excel_file.open_worksheet("DEV WEB", file)
+                test_excel_file.open_worksheet("Calendrier", file)
                 test_excel_file.save_formateur_worksheet(instructor.get_last_name()) 
                 modules = test_excel_file.create_modules(file)
                 cache.set(cache_key, modules)
@@ -195,7 +195,7 @@ class CalendarView(LoginRequiredMixin,View):
                 print(f"serialized_data : {cached_modules_from_excel_file}", type(cached_modules_from_excel_file))
             else:
                 test_excel_file = ExcelFile()
-                test_excel_file.open_worksheet("DEV WEB")
+                test_excel_file.open_worksheet("Calendrier")
                 test_excel_file.save_formateur_worksheet(instructor.get_last_name()) 
                 modules = test_excel_file.create_modules()
                 cache.set(cache_key, modules)

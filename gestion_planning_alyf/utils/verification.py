@@ -60,9 +60,9 @@ def is_planning__change(instructor):
      temp_file = tempfile.NamedTemporaryFile(delete=False, suffix='.xlsm').name
      
      dico.update({formateur: temp_file})
-     excelfile.open_worksheet('DEV WEB', newest_excel_file) 
+     excelfile.open_worksheet('Calendrier', newest_excel_file) 
      
-     excelfile.save_instructor_sheet_separately(formateur.get_last_name(), temp_file)
+     excelfile.save_instructor_sheet_separately_base(formateur.get_last_name(), temp_file)
      cache.set("dict_sheets_temp_storage", dico)
      return False
     # print(f"new file for instuctor {key} added to the temp files") 
@@ -76,8 +76,8 @@ def is_planning__change(instructor):
      if os.path.exists(fileB):
       os.remove(fileB)
    
-    excelfile.open_worksheet('DEV WEB', newest_excel_file)
-    excelfile.save_instructor_sheet_separately(formateur.get_last_name(), fileB)
+    excelfile.open_worksheet('Calendrier', newest_excel_file)
+    excelfile.save_instructor_sheet_separately_base(formateur.get_last_name(), fileB)
 
   
 
@@ -85,8 +85,8 @@ def is_planning__change(instructor):
 
     # Convertir les fichiers Excel en CSV pour une comparaison plus fiable
     print("juste avant le pd.read excel")
-    data_fileA = pd.read_excel(fileA, sheet_name='DEV WEB', engine='openpyxl')
-    data_fileB = pd.read_excel(fileB, sheet_name='DEV WEB', engine='openpyxl')
+    data_fileA = pd.read_excel(fileA, sheet_name='Calendrier', engine='openpyxl')
+    data_fileB = pd.read_excel(fileB, sheet_name='Calendrier', engine='openpyxl')
 
     # .to_csv('fileB.csv', index=False)
 

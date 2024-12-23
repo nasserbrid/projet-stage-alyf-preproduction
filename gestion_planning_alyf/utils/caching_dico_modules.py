@@ -35,8 +35,8 @@ def create_temp_data_for_all_instructors():
 
     for instructor, file in dico.items():
         excel = ExcelFile( )
-        print(instructor.get_last_name())
-        excel.open_worksheet("DEV WEB", file)
+        #print(instructor.get_last_name())
+        excel.open_worksheet("Calendrier", file)
         
         new_modules = excel.create_modules(file)
         cache_key = f'modules_{instructor.get_last_name()}'
@@ -71,7 +71,7 @@ def update_dico_module_for_instructors(formateurs):
 
         cache_key = f'modules_{formateur}'
         excel = ExcelFile()
-        excel.open_worksheet("DEV WEB", fileA)
+        excel.open_worksheet("Calendrier", fileA)
         
         new_modules = excel.create_modules(fileA)
         cache.set(cache_key, new_modules)
